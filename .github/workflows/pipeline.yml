@@ -1,10 +1,13 @@
 name: CI/CD Pipeline
 
-# Ο αγωγός εκτελείται μόνο σε commits στο κλαδί develop
 on:
   push:
     branches:
       - develop
+
+# Δίνουμε ρητά τα δικαιώματα για να δημιουργηθεί το Release
+permissions:
+  contents: write
 
 jobs:
   build-and-test:
@@ -23,7 +26,6 @@ jobs:
         
     - name: Build and Test (Unit & Integration)
       working-directory: ./citizen-registry
-      # Η εντολή verify μεταγλωττίζει και τρέχει όλα τα τεστ (unit & integration)
       run: mvn clean verify
       
     - name: Upload Unit Test Reports
@@ -42,7 +44,6 @@ jobs:
         path: '**/target/failsafe-reports/'
         if-no-files-found: ignore
 
-  # Προαιρετική εργασία: Δημιουργία Release του εκτελέσιμου
   release:
     needs: build-and-test
     runs-on: ubuntu-latest

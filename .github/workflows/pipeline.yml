@@ -2,12 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - develop
-
-# Δίνουμε ρητά τα δικαιώματα για να δημιουργηθεί το Release
-permissions:
-  contents: write
+    branches: [ "develop" ]
 
 jobs:
   build-and-test:
@@ -22,10 +17,11 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: 'maven'
+        cache: maven
         
-    - name: Build and Test (Unit & Integration)
+    - name: Build and Test
       working-directory: ./citizen-registry
+      # Using verify to run both unit tests (surefire) and integration tests (failsafe)
       run: mvn clean verify
       
     - name: Upload Unit Test Reports
@@ -47,7 +43,6 @@ jobs:
   release:
     needs: build-and-test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
     
     steps:
     - name: Checkout Repository
@@ -58,7 +53,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: 'maven'
+        cache: maven
         
     - name: Build Executable
       working-directory: ./citizen-registry

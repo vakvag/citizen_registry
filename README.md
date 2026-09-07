@@ -71,9 +71,3 @@ cd ../execution
 terraform init
 terraform apply
 ```
-
-### 4. Destruction Phase
-```bash
-cd citizen-registry/terraform/execution
-terraform destroy
-```

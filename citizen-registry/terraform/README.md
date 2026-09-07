@@ -82,18 +82,3 @@ Outputs:
 load_balancer_dns_name = "citizen-alb-123456789.eu-central-1.elb.amazonaws.com"
 ```
 
----
-
-### 4. Destruction Phase
-To destroy and tear down all deployed cloud infrastructure resources:
-
-```bash
-cd terraform/execution
-terraform destroy -auto-approve
-```
-
-To destroy the preparation AMIs as well:
-```bash
-cd ../preparation
-terraform destroy -auto-approve
-```

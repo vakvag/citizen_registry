@@ -1,4 +1,4 @@
-# Terraform Infrastructure Models (AWS) - Assignment l3689
+# Terraform Infrastructure Models (AWS)
 
 This folder contains the infrastructure configuration models written in **HCL (Terraform)** for automated cloud management of the **Spring Boot RESTful service** (Citizen Registry) and its underlying **Database Management System (DBMS - MySQL 8)** on AWS.
 
@@ -8,7 +8,7 @@ This folder contains the infrastructure configuration models written in **HCL (T
 
 ```
 terraform/
-├── preparation/                   # (50/100) Preparation Phase - Image Creation (AMIs)
+├── preparation/                   # Preparation Phase - Image Creation (AMIs)
 │   ├── main.tf                    # HCL definitions for AMI creation
 │   ├── variables.tf               # Input variables
 │   ├── outputs.tf                 # Generated AMI IDs
@@ -16,7 +16,7 @@ terraform/
 │       ├── db_prep.sh             # MySQL 8 installation & setup script
 │       └── app_prep.sh            # Java 17 & Spring Boot Service setup script
 │
-└── execution/                     # (50/100) Execution & Destruction Phase - Deployment
+└── execution/                     # Execution & Destruction Phase - Deployment
     ├── main.tf                    # HCL definitions (1x DB, 3x REST Instances, ALB, SGs, VPC)
     ├── variables.tf               # Input variables
     ├── outputs.tf                 # Load Balancer DNS name & instance IPs

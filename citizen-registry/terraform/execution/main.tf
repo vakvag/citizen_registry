@@ -1,5 +1,5 @@
 # ==============================================================================
-# Execution & Destruction Phase (50/100)
+# Execution & Destruction Phase
 # Infrastructure Deployment: 1x DBMS Instance, 3x REST App Instances, ALB & Security Rules
 # ==============================================================================
 

@@ -4,7 +4,7 @@
 [![Terraform](https://img.shields.io/badge/Terraform->=1.0.0-blue.svg)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-EC2%20%7C%20ALB%20%7C%20VPC-orange.svg)](https://aws.amazon.com/)
 
-A comprehensive Spring Boot RESTful application (**Citizen Registry / Μητρώο Πολιτών**) integrated with automated **Infrastructure as Code (IaC)** using **Terraform** and **Amazon Web Services (AWS)**. Developed for the course **l3689 - Cloud Computing and Cross-Cloud Resource Management**.
+A comprehensive Spring Boot RESTful application (**Citizen Registry**) integrated with automated **Infrastructure as Code (IaC)** using **Terraform** and **Amazon Web Services (AWS)**.
 
 ---
 
@@ -44,8 +44,8 @@ The system architecture automates image preparation and full lifecycle managemen
 
 - **[`citizen-registry/`](./citizen-registry/)**: Main Maven multi-module Spring Boot application (`citizen-domain`, `citizen-service`).
 - **[`citizen-registry/terraform/`](./citizen-registry/terraform/)**: Terraform infrastructure models:
-  - **`preparation/`** (50/100): Automated creation of custom AMIs for DBMS and REST Service.
-  - **`execution/`** (50/100): Full infrastructure deployment (1x DB, 3x REST Instances, ALB, Security Groups, VPC).
+  - **`preparation/`**: Automated creation of custom AMIs for DBMS and REST Service.
+  - **`execution/`**: Full infrastructure deployment (1x DB, 3x REST Instances, ALB, Security Groups, VPC).
 - **[`citizen-registry/terraform/README.md`](./citizen-registry/terraform/README.md)**: Detailed step-by-step CLI usage guide.
 
 ---
@@ -77,11 +77,3 @@ terraform apply
 cd citizen-registry/terraform/execution
 terraform destroy
 ```
-
----
-
-## 🔒 Security Group Firewall Rules
-
-1. **ALB Security Group**: Public HTTP (`Port 80`) access from `0.0.0.0/0`.
-2. **App Security Group**: Ingress on `Port 8080` restricted **ONLY** to traffic coming from the ALB Security Group. SSH (`Port 22`) for admin.
-3. **DBMS Security Group**: Ingress on MySQL (`Port 3306`) restricted **ONLY** to traffic coming from the REST App Security Group. SSH (`Port 22`) for admin.

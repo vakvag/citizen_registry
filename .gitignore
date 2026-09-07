@@ -1,0 +1,15 @@
+# Terraform ignore rules
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+!terraform.tfvars.example
+
+# Maven / Java ignore rules
+target/
+*.class
+*.jar
+*.war
+.idea/
+*.iml
+.vscode/

@@ -1,0 +1,8 @@
+# Παράδειγμα παραμέτρων εκτέλεσης (terraform.tfvars)
+aws_region         = "eu-central-1"
+instance_type      = "t2.micro"
+key_name           = "my-aws-ssh-key"
+app_instance_count = 3
+db_name            = "citizendb"
+db_user            = "citizenuser"
+db_password        = "CitizenDBPass2026!"
